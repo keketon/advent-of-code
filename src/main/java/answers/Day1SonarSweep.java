@@ -1,13 +1,20 @@
+package answers;
+
+import annotation.Part;
+import annotation.Problem;
+import consts.Const;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class SonarSweepDay1 {
-    private static final String resourceFileName = "SonarSweepDay1Input.txt";
-
-    public static void main(String[] args) throws IOException {
-        File f = new File(Const.INPUT_DIR + resourceFileName);
+@Problem(no = 1)
+public class Day1SonarSweep {
+    @Part(no = 1)
+    public String increasedCount() throws IOException {
+        String resourcePath = "Day1SonarSweepInput.txt";
+        File f = new File(Const.INPUT_DIR + resourcePath);
         BufferedReader br = new BufferedReader(new FileReader(f));
 
         String str;
@@ -20,6 +27,6 @@ public class SonarSweepDay1 {
             prv = now;
         }
 
-        System.out.println(increased);
+        return String.valueOf(increased);
     }
 }
