@@ -15,7 +15,7 @@ import java.util.Queue;
 public class Day1SonarSweep {
     @Part(no = 1)
     public String increasedCount() throws IOException {
-        String resourcePath = "Day1SonarSweepInput.txt";
+        String resourcePath = "Day1SonarSweep.txt";
         File f = new File(Const.INPUT_DIR + resourcePath);
         BufferedReader br = new BufferedReader(new FileReader(f));
 
@@ -38,7 +38,7 @@ public class Day1SonarSweep {
      */
     @Part(no = 2)
     public String increasedCountWithRange() throws IOException {
-        String resourcePath = "Day1SonarSweepInput.txt";
+        String resourcePath = "Day1SonarSweep.txt";
         File f = new File(Const.INPUT_DIR + resourcePath);
         BufferedReader br = new BufferedReader(new FileReader(f));
 
