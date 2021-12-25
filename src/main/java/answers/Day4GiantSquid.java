@@ -7,6 +7,7 @@ import consts.Const;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -49,6 +50,43 @@ public class Day4GiantSquid {
         }
 
         int ans = 0;
+        return String.valueOf(ans);
+    }
+
+    @Part(no = 2)
+    public String lastWinnerScore() throws IOException {
+        init();
+
+        List<Integer> draws = Arrays.stream(br.readLine().split(",")).map(Integer::parseInt).collect(Collectors.toList());
+        List<BingoSheet> sheets = new LinkedList<>();
+
+        String cursor = br.readLine();
+        while (cursor != null) {
+            List<String> strs = new ArrayList<>(5);
+            for (int i = 0; i < BINGO_LINE; i++) {
+                strs.add(br.readLine());
+            }
+            sheets.add(new BingoSheet(strs));
+            cursor = br.readLine();
+        }
+
+        int ans = 0;
+
+        for (int draw : draws) {
+            List<BingoSheet> remove = new LinkedList<>();
+            for (BingoSheet sheet : sheets) {
+                boolean hasMarkedLine = sheet.markDraw(draw);
+                if (hasMarkedLine) {
+                    ans = sheet.calcScore(draw);
+                    remove.add(sheet);
+                }
+            }
+
+            for (BingoSheet sheet : remove) {
+                sheets.remove(sheet);
+            }
+        }
+
         return String.valueOf(ans);
     }
 
